@@ -53,7 +53,7 @@ class PublicUserApiTests(TestCase):
         payload = {
             'email':'test@example.com',
             'password':'pw',
-            'name':'Test Name',
+            'name':'Test name',
         }
         res = self.client.post(CREATE_USER_URL, payload)
 
@@ -94,9 +94,8 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_email_not_found(self):
         """Test returns error if user not found for given email."""
-        create_user(email='test@example.com', password = 'pass123')
 
-        payload = {'email': 'test@example.com', 'password': 'badpass'}
+        payload = {'email': 'test@example.com', 'password': 'pass123'}
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertNotIn('token', res.data)
