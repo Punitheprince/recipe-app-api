@@ -35,7 +35,7 @@ class ModelTests(TestCase):
             user = get_user_model().objects.create_user(email, 'sample123')
             self.assertEqual(user.email, expected)
 
-    def test_new_user_without_email_raise_error(self):
+    def test_new_user_without_email_raises_error(self):
         """test that creating a user without an email raises a vlaueerror."""
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user('', 'test123')
@@ -61,7 +61,7 @@ class ModelTests(TestCase):
             title='Sample recipe name',
             time_minutes=5,
             price=Decimal('5.50'),
-            description='Sample recipe descrption.',
+            description='Sample receipe description.',
         )
 
         self.assertEqual(str(recipe), recipe.title)
