@@ -14,10 +14,10 @@ from django.contrib.auth.models import (
 class UserManager(BaseUserManager):
     """manager for users."""
 
-    def create_user(self, email, password=True, **extra_fields):
+    def create_user(self, email, password=None, **extra_fields):
         """create, save and return a new user."""
         if not email:
-            raise ValueError('user must have an email adddress.')
+            raise ValueError('User must have an email adddress.')
         user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -56,7 +56,7 @@ class Recipe(models.Model):
     description = models.TextField(blank=True)
     time_minutes = models.IntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    link = models.CharField(max_length=225, blank=True)
+    link = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return self.title
