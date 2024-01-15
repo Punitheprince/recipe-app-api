@@ -43,7 +43,7 @@ class PrivateIngredientsApiTests(TestCase):
         self.client = APIClient()
         self.client.force_authenticate(self.user)
 
-    def test_retrive_ingredients(self):
+    def test_retrieve_ingredients(self):
         """test reteeivng a list of ingrdients."""
         Ingredient.objects.create(user=self.user, name='kale')
         Ingredient.objects.create(user=self.user, name='Vanilla')
@@ -88,6 +88,6 @@ class PrivateIngredientsApiTests(TestCase):
         res =self.client.delete(url)
 
         self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
-        ingrdients = Ingredient.objects.filter(user=self.user)
-        self.assertFalse(ingrdients.exists())
+        ingredients  = Ingredient.objects.filter(user=self.user)
+        self.assertFalse(ingredients .exists)
 

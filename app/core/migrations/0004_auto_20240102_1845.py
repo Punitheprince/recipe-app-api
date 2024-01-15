@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='recipe',
-            name='ingredient',
+            name='ingredients',
             field=models.ManyToManyField(to='core.Ingredient'),
         ),
     ]
